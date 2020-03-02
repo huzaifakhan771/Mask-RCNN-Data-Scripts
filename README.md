@@ -8,6 +8,6 @@ This repository contains two python scripts
 
 # Libraries to install for using the scripts
 
-pip3 install scikit-image
-pip3 install numpy
-pip3 install opencv-contrib-python==3.4.1.15
+- pip3 install scikit-image
+- pip3 install numpy
+- pip3 install opencv-contrib-python==3.4.1.15
