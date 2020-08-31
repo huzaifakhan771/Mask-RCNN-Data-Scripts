@@ -32,27 +32,27 @@ def overlay_annt_maps(dataset_dir, annotation_file, output_dir, binary_flag = Tr
         else:
             polygons = [r['shape_attributes'] for r in a['regions']] 
 
-        # read original image to get its height and width
-        # image_path = os.path.join(dataset_dir, a['filename'])
-        # image = cv2.imread(image_path)
-        # height, width = image.shape[:2]
+        # Read original image to get its height and width
+        image_path = os.path.join(dataset_dir, a['filename'])
+        image = cv2.imread(image_path)
+        height, width = image.shape[:2]
         
-        # # Create a mask of zeroes of height and width
-        # mask = np.zeros([height, width, len(polygons)], dtype=np.uint8)
+        # Create a mask of zeroes of height and width
+        mask = np.zeros([height, width, len(polygons)], dtype=np.uint8)
 
-        # # Extract x and y points from polygons and a set the polygon regions as 255, i-e white
-        # for i, p in enumerate(polygons):
-        #     rr, cc = skimage.draw.polygon(p['all_points_y'], p['all_points_x'])
-        #     mask[rr, cc, i] = (1*255)
+        # Extract x and y points from polygons and a set the polygon regions as 255, i-e white
+        for i, p in enumerate(polygons):
+            rr, cc = skimage.draw.polygon(p['all_points_y'], p['all_points_x'])
+            mask[rr, cc, i] = (1*255)
         
-        # # If binary flag is True, create binary images from annotation polygons, otherwise
-        # # map overlays of annotation on original images
-        # if binary_flag:
-        #     cv2.imwrite(os.path.join(output_dir, a['filename']), mask)
-        # else:
-        #     overlayed_img = create_overlay(image, mask)
-        #     cv2.imwrite(os.path.join(output_dir, a['filename']), overlayed_img)
-        # print(a['filename'])
+        # If binary flag is True, create binary images from annotation polygons, otherwise
+        # map overlays of annotation on original images
+        if binary_flag:
+            cv2.imwrite(os.path.join(output_dir, a['filename']), mask)
+        else:
+            overlayed_img = create_overlay(image, mask)
+            cv2.imwrite(os.path.join(output_dir, a['filename']), overlayed_img)
+        print(a['filename'])
 
 
 
