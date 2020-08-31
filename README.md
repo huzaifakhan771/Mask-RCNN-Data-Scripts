@@ -2,9 +2,9 @@
 
 This repository contains two python scripts
 
-1. polytobinarymask.py creates binary mask images from the polygons read from JSON annotation files.
+1. polytobinary_and_overlay.py creates binary mask images/maps annotation overlay on original images depending on the given flag.
 
-2. mapmaskoverlay.py creates overlays of those masks on the original images to visualize the masks' accuracy.
+2. create_json_from_binary.py creates annotations for MaskRCNN in JSON format. The input for creating annotations will be binary images, the same size as the RGB images in the training set. Currently, it works for a single object per image.
 
 # Libraries to install for using the scripts
 
